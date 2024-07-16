@@ -54,4 +54,7 @@ unnecessary GPX points. Finally, the singular, multi-segmented GPX file is
 split into individual files per segment that are stored in `./` with `--out ./
 split`.
 
+## Results
+The gif below shows the before (two GPX segments, spanning multiple years) and after (over 100 individual tracks) of using `gpsplit`.
+
 ![Example showing before and after treatment with gpsplit](before-and-after.gif)
