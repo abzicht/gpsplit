@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<gpx xmlns="http://www.topografix.com/GPX/1/1" xmlns:gpxx="http://www.garmin.com/xmlschemas/GpxExtensions/v3" xmlns:wptx1="http://www.garmin.com/xmlschemas/WaypointExtension/v1" xmlns:gpxtpx="http://www.garmin.com/xmlschemas/TrackPointExtension/v1" creator="gpxio_test_1" version="1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd http://www.garmin.com/xmlschemas/GpxExtensions/v3 http://www8.garmin.com/xmlschemas/GpxExtensionsv3.xsd http://www.garmin.com/xmlschemas/WaypointExtension/v1 http://www8.garmin.com/xmlschemas/WaypointExtensionv1.xsd http://www.garmin.com/xmlschemas/TrackPointExtension/v1 http://www.garmin.com/xmlschemas/TrackPointExtensionv1.xsd">
+<metadata>
+ <time>1971-01-10T11:00:00Z</time>
+ <name>Recording</name>
+ <desc>For Test Purposes</desc>
+</metadata>
+<trk>
+ <name>Test Track</name>
+ <trkseg>
+  <trkpt lat="1.04036821" lon="1.84329670">
+   <time>1971-01-10T11:00:00Z</time>
+   <ele>605.00</ele>
+   <sat>22</sat>
+   <extensions>
+     <speed>0.15</speed>
+     <course>300.010</course>
+     <accuracy>10.00</accuracy>
+     <batterylevel>99.00</batterylevel>
+     <useragent>Test Agent</useragent>
+   </extensions>
+  </trkpt>
+  <trkpt lat="1.24036821" lon="1.84329670">
+   <time>1971-01-11T11:00:00Z</time>
+   <ele>600.00</ele>
+   <sat>32</sat>
+   <extensions>
+     <speed>0.18</speed>
+     <course>270.000</course>
+     <accuracy>5.00</accuracy>
+     <batterylevel>92.00</batterylevel>
+     <useragent>Test Agent</useragent>
+   </extensions>
+  </trkpt>
+ </trkseg>
+</trk>
+</gpx>
