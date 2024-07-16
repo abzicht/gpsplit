@@ -1,4 +1,4 @@
-![GPSplit](gpsplit.svg)
+<img src="gpsplit.svg" alt="GPSplit Logo" style="display: block;margin-left: auto;margin-right: auto;width: 50%;" width="500"/>
 
 # GPSplit
 
