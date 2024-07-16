@@ -53,3 +53,5 @@ points at the start and end of a segment that are in a 50 meter radius. `direct
 unnecessary GPX points. Finally, the singular, multi-segmented GPX file is
 split into individual files per segment that are stored in `./` with `--out ./
 split`.
+
+![Example showing before and after treatment with gpsplit](before-and-after.gif)
