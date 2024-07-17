@@ -81,7 +81,7 @@ that are applied directly on GPX segments.
     their neighboring points.
   + `--min-radius 1000` removes segments completely, if their points lie within
     a 1000 meter radius to the starting point.
-  + `--min-points 80` removes segments completely, if they have less then 80
+  + `--min-points 80` removes segments completely, if they have less than 80
     GPX points.
 
 ## Library
@@ -130,10 +130,11 @@ if err != nil {panic(err)}
 ```
 
 Besides `Split`, `gpxtransform` holds further transformation types, including
-`Filter`, `AnalyzeFile`, and `Direct`. The last one, `Direct` provides greatest
-flexibility in regard to direct modification of GPX segments. Most
-transformation types expect the specification of desired options
-(cf. `gpxtransform.Split(options.TimeSplit(duration))`). The
+`Filter`, `AnalyzeFile`, and `Direct`. The last one, `Direct`, provides greatest
+flexibility in regard to direct modification of GPX segments.
+
+Most transformation types expect the specification of desired options (cf.
+`gpxtransform.Split(options.TimeSplit(duration))`). The
 [gpxtransform.options](gpxtransform/options) package provides corresponding
 options that are also found in the command line interface.
 
@@ -142,13 +143,13 @@ option to split at large time jumps is defined as follows:
 
 ```go
 func TimeSplit(maxStep time.Duration) SplitOptions {
-	return SplitOptions{
-		func(segment gpx.GPXTrackSegment, index int) (bool, error) {
-			duration := segment.Points[index+1].Timestamp.Sub(segment.Points[index].Timestamp)
+    return SplitOptions{
+        func(segment gpx.GPXTrackSegment, index int) (bool, error) {
+            duration := segment.Points[index+1].Timestamp.Sub(segment.Points[index].Timestamp)
             // return true, iff we want to split:
-			return maxStep <= duration, nil
-		},
-	}
+            return maxStep <= duration, nil
+        },
+    }
 }
 ```
 
