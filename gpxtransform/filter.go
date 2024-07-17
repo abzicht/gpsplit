@@ -29,6 +29,6 @@ func Filter(filterOptions ...options.FilterOptions) config.GPXSegmentTransform {
 				points = append(points, trackSegment.Points[index])
 			}
 		}
-		return []gpx.GPXTrackSegment{gpx.GPXTrackSegment{points, trackSegment.Extensions}}, err
+		return []gpx.GPXTrackSegment{gpx.GPXTrackSegment{Points: points, Extensions: trackSegment.Extensions}}, err
 	}
 }
