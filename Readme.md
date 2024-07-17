@@ -1,4 +1,4 @@
-<img src="gpsplit.svg" alt="GPSplit Logo" style="display: block;margin-left: auto;margin-right: auto;width: 50%;" width="500"/>
+<img src="gpsplit.png" alt="GPSplit Logo" width="500"/>
 
 # GPSplit
 
