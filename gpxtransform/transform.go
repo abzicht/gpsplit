@@ -74,3 +74,26 @@ func TransformFile(gpxFile gpx.GPX, tc config.TransformConfig) ([]gpx.GPX, error
 		return []gpx.GPX{gpxFile}, nil
 	}
 }
+
+/*
+TransformFiles applies a provided config.TransformConfig on multiple gpx files. It
+* returns zero, one, or multiple files depending on the
+* applied transformation.
+*/
+func TransformFiles(gpxFiles []gpx.GPX, tc config.TransformConfig) ([]gpx.GPX, error) {
+	files := []gpx.GPX{}
+	for fileIndex, _ := range gpxFiles {
+		f, err := TransformFile(gpxFiles[fileIndex], tc)
+		if err != nil {
+			return nil, err
+		}
+		files = append(files, f...)
+	}
+	gpxFiles = files
+	switch tc.FilesT.(type) {
+	case fun.Some[config.GPXFilesTransform]:
+		return tc.FilesT.GetValue()(gpxFiles)
+	default:
+		return gpxFiles, nil
+	}
+}

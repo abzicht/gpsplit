@@ -50,14 +50,10 @@ func main() {
 		return
 	}
 
-	outFiles := []gpx.GPX{}
-	for _, gpxFile := range gpxFiles {
-		outFiles_, err2 := gpxtransform.TransformFile(gpxFile, tc)
-		if err2 != nil {
-			slog.Error(err2.Error())
-			return
-		}
-		outFiles = append(outFiles, outFiles_...)
+	outFiles, err := gpxtransform.TransformFiles(gpxFiles, tc)
+	if err != nil {
+		slog.Error(err.Error())
+		return
 	}
 
 	if len(flagOpts.Out) == 0 {
