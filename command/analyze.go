@@ -6,7 +6,7 @@ import (
 )
 
 type AnalyzeCommand struct {
-	Num bool `short:"c" long:"count" description:"Only analyze object counts"`
+	Num bool `short:"c" long:"count" description:"Only analyze object counts."`
 }
 
 func (a AnalyzeCommand) GetConfiguration() (tc config.TransformConfig, err error) {

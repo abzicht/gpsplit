@@ -12,7 +12,7 @@ import (
 type DirectCommand struct {
 	Simplify    unit.Length   `short:"s" long:"simplify" description:"Simplify tracks using Ramer-Douglas-Peucker algorithm with the provided distance in meters." default:"0"`
 	MinPoints   int           `long:"min-points" description:"Remove segments that have less points than the provided number." default:"0"`
-	MinRadius   unit.Length   `long:"min-radius" description:"Remove segments that whose points are all within a given radius from the starting point." default:"0"`
+	MinRadius   unit.Length   `long:"min-radius" description:"Remove segments whose points are all within a given radius from the starting point." default:"0"`
 	MinDistance unit.Length   `long:"min-distance" description:"Remove segments that are shorter than the provided min distance." default:"0"`
 	MinDuration time.Duration `long:"min-duration" description:"Remove segments that are shorter than the provided min duration." default:"0"`
 	MaxDuration time.Duration `long:"max-duration" description:"Remove segments that are longer than the provided min duration." default:"0"`

@@ -8,7 +8,7 @@ import (
 type MergeCommand struct {
 	MergeSegments bool `short:"s" long:"merge-segments" description:"Merge multiple segments from a track to a single segment."`
 	MergeTracks   bool `short:"t" long:"merge-tracks" description:"Merge multiple tracks to a single track."`
-	MergeFiles    bool `short:"f" long:"merge-files" description:"Merge multiple files to a single files."`
+	MergeFiles    bool `short:"f" long:"merge-files" description:"Merge multiple files to a single file."`
 }
 
 func (m MergeCommand) GetConfiguration() (tc config.TransformConfig, err error) {

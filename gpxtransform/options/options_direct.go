@@ -9,12 +9,19 @@ import (
 	"gonum.org/v1/gonum/unit"
 )
 
+/*
+DirectOptions hold a function that directly modifies a segment,
+returning zero, one or multiple modified segments.
+Unlike Split and Filter, Direct functions are able to apply any type of modification.
+*/
 type DirectOptions struct {
 	Do func(segment gpx.GPXTrackSegment) ([]gpx.GPXTrackSegment, error)
 }
 
 /*
-Polyline simplification based on Ramer-Douglas-Peucker. Points are simplified when for the provided maxDistance.
+Polyline simplification based on Ramer-Douglas-Peucker:
+Points are removed when lying within maxDistance of the line formed by its two
+adjacent points.
 */
 func DouglasPeucker(maxDistance unit.Length) DirectOptions {
 	return DirectOptions{

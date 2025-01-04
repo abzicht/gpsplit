@@ -13,14 +13,14 @@ import (
 Flag holds all arguments passed via command line
 */
 type Flags struct {
-	In      string         `short:"i" long:"in" description:"The file or folder that new GPX data is read from. Leave empty to read from STDIN"`
-	Out     string         `short:"o" long:"out" description:"The file or folder that new GPX data is written to. Leave empty to write to STDOUT"`
-	Verbose []bool         `short:"v" long:"verbosity" description:"Verbosity with that information is printed to STDOUT"`
-	Split   SplitCommand   `command:"split" description:"Splits GPX segments into multiple segments or files"`
-	Merge   MergeCommand   `command:"merge" description:"Merges multiple GPX segments and tracks into single entities"`
-	Filter  FilterCommand  `command:"filter" description:"Applies filters on GPX points"`
-	Direct  DirectCommand  `command:"direct" description:"Applies misc. functionality directly on GPX segments"`
-	Analyze AnalyzeCommand `command:"analyze" description:"Prints information for the provided GPX data"`
+	In      string         `short:"i" long:"in" description:"The file or folder that new GPX data is read from. Leave empty to read from STDIN."`
+	Out     string         `short:"o" long:"out" description:"The file or folder that new GPX data is written to. Leave empty to write to STDOUT."`
+	Verbose []bool         `short:"v" long:"verbosity" description:"Verbosity with that information is printed to STDOUT."`
+	Split   SplitCommand   `command:"split" description:"Splits GPX segments into multiple segments or files."`
+	Merge   MergeCommand   `command:"merge" description:"Merges multiple GPX segments and tracks into single entities."`
+	Filter  FilterCommand  `command:"filter" description:"Applies filters on GPX points."`
+	Direct  DirectCommand  `command:"direct" description:"Applies misc. functionality directly on GPX segments."`
+	Analyze AnalyzeCommand `command:"analyze" description:"Prints information for the provided GPX data."`
 }
 
 /*

@@ -7,6 +7,9 @@ import (
 	"gonum.org/v1/gonum/unit"
 )
 
+/*
+SplitOptions hold a function that returns true iff a segment should be split at an indicated point
+*/
 type SplitOptions TransformOptions
 
 /*
