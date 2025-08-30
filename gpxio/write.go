@@ -10,6 +10,10 @@ import (
 	"github.com/tkrajina/gpxgo/gpx"
 )
 
+/* Write all gpx objects to STDOUT.
+ * Files are pretty-printed, i.e., use indentation.
+ * Files are separated by a single empty line.
+ */
 func WriteStdout(outFiles []gpx.GPX) (err error) {
 	for _, gpxFile := range outFiles {
 		var xmlBytes []byte
@@ -38,15 +42,27 @@ func WriteStdout(outFiles []gpx.GPX) (err error) {
 	return
 }
 
+/* Save all gpx objects to files.
+ * If the given fileName points to a folder: all files are named according to
+ * the name defined in the gpx object.
+ * Else: all files use the fileName as prefix.
+ */
 func WriteFiles(fileName string, outFiles []gpx.GPX) (err error) {
 
 	info, err := os.Stat(fileName)
 	if err != nil {
-		return
+		if os.IsNotExist(err) {
+			// File doesn't exist. That error is expected and does not need to
+			// be escalated.
+			info = nil
+			err = nil
+		} else {
+			return
+		}
 	}
 
 	var getFileName func(gpxFile gpx.GPX, index int) string
-	if info.IsDir() {
+	if nil != info && info.IsDir() {
 		getFileName = func(gpxFile gpx.GPX, index int) string {
 			baseName := slug.Make(gpxFile.Name)
 			return filepath.Join(fileName, fmt.Sprintf("%v-%v.gpx", baseName, index))

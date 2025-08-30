@@ -14,7 +14,7 @@ import (
 )
 
 /*
-ReadFileSystem reads file(s) from the filesystem using the provided path (fileName).
+ReadFileSystem reads file(s) from the file system using the provided path (fileName).
 If fileName is a folder, it reads all top-level files ending with ".gpx" or ".GPX" in that folder
 */
 func ReadFileSystem(fileName string) (gpxFiles []gpx.GPX, err error) {
