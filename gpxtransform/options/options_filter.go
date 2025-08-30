@@ -11,9 +11,9 @@ FilterOptions hold a function that returns true iff a point should be included i
 type FilterOptions TransformOptions
 
 /*
-TrimLeft cuts all points that are reached from the first recorded point within the provided max radius
+TrimStart cuts all points that are reached from the first recorded point within the provided max radius
 */
-func TrimLeft(maxRadius unit.Length) FilterOptions {
+func TrimStart(maxRadius unit.Length) FilterOptions {
 	return FilterOptions{
 		func(segment gpx.GPXTrackSegment, index int) (bool, error) {
 			if len(segment.Points) == 0 {
@@ -37,9 +37,9 @@ func TrimLeft(maxRadius unit.Length) FilterOptions {
 }
 
 /*
-TrimRight cuts all points that are reached backwards from the last recorded point within the provided max radius
+TrimEnd cuts all points that are reached backwards from the last recorded point within the provided max radius
 */
-func TrimRight(maxRadius unit.Length) FilterOptions {
+func TrimEnd(maxRadius unit.Length) FilterOptions {
 	return FilterOptions{
 		func(segment gpx.GPXTrackSegment, index int) (bool, error) {
 			if len(segment.Points) == 0 {

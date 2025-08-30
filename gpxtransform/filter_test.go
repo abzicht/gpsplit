@@ -10,16 +10,16 @@ import (
 	"gonum.org/v1/gonum/unit"
 )
 
-func TestFilterTrimLeft(t *testing.T) {
+func TestFilterTrimStart(t *testing.T) {
 	gpxFile, err := gpx.ParseBytes([]byte(gpxData))
 	assert.NoError(t, err)
-	tc := config.NewTransformConfig(config.WithSegmentTransform(Filter(options.TrimLeft(10 * unit.Metre))))
+	tc := config.NewTransformConfig(config.WithSegmentTransform(Filter(options.TrimStart(10 * unit.Metre))))
 	gpxFiles, err := TransformFile(*gpxFile, tc)
 	assert.NoError(t, err)
 	assert.Equal(t, 2, len(gpxFiles[0].Tracks))
 	assert.Equal(t, 2, len(gpxFiles[0].Tracks[0].Segments[0].Points))
 
-	tc = config.NewTransformConfig(config.WithSegmentTransform(Filter(options.TrimLeft(100 * unit.Metre))))
+	tc = config.NewTransformConfig(config.WithSegmentTransform(Filter(options.TrimStart(100 * unit.Metre))))
 	gpxFiles, err = TransformFile(*gpxFile, tc)
 	assert.NoError(t, err)
 	assert.Equal(t, 2, len(gpxFiles[0].Tracks))
@@ -27,16 +27,16 @@ func TestFilterTrimLeft(t *testing.T) {
 
 }
 
-func TestFilterTrimRight(t *testing.T) {
+func TestFilterTrimEnd(t *testing.T) {
 	gpxFile, err := gpx.ParseBytes([]byte(gpxData))
 	assert.NoError(t, err)
-	tc := config.NewTransformConfig(config.WithSegmentTransform(Filter(options.TrimRight(10 * unit.Metre))))
+	tc := config.NewTransformConfig(config.WithSegmentTransform(Filter(options.TrimEnd(10 * unit.Metre))))
 	gpxFiles, err := TransformFile(*gpxFile, tc)
 	assert.NoError(t, err)
 	assert.Equal(t, 2, len(gpxFiles[0].Tracks))
 	assert.Equal(t, 2, len(gpxFiles[0].Tracks[0].Segments[0].Points))
 
-	tc = config.NewTransformConfig(config.WithSegmentTransform(Filter(options.TrimRight(100 * unit.Metre))))
+	tc = config.NewTransformConfig(config.WithSegmentTransform(Filter(options.TrimEnd(100 * unit.Metre))))
 	gpxFiles, err = TransformFile(*gpxFile, tc)
 	assert.NoError(t, err)
 	assert.Equal(t, 2, len(gpxFiles[0].Tracks))
