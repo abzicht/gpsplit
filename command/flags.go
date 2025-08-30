@@ -19,7 +19,7 @@ type Flags struct {
 	Split   SplitCommand   `command:"split" description:"Splits track segments into multiple tracks or files."`
 	Merge   MergeCommand   `command:"merge" description:"Merges multiple files / tracks / track segments into single instances."`
 	Filter  FilterCommand  `command:"filter" description:"Applies filters on waypoints."`
-	Direct  DirectCommand  `command:"direct" description:"Applies misc. functionality directly on files / tracks / track segments."`
+	Remove  DirectCommand  `command:"remove" description:"Removes certain tracks / track segments / waypoints."`
 	Analyze AnalyzeCommand `command:"analyze" description:"Prints information for the provided GPX data."`
 }
 
@@ -48,7 +48,7 @@ func (flagOpts Flags) GetConfiguration(name string) (tc config.TransformConfig, 
 	case "filter":
 		tc, err = flagOpts.Filter.GetConfiguration()
 	case "direct":
-		tc, err = flagOpts.Direct.GetConfiguration()
+		tc, err = flagOpts.Remove.GetConfiguration()
 	case "analyze":
 		tc, err = flagOpts.Analyze.GetConfiguration()
 	default:

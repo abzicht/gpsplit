@@ -46,7 +46,7 @@ after (over 100 individual tracks) of using `gpsplit`.
 The following command was used to obtain this result:
 
 ```bash
-gpsplit -i ./my-recording.gpx split -d 5000 -t 8h --pause-split 200,1h | gpsplit filter --trim 50 | gpsplit -o ./gpx direct --simplify 40 --min-radius 1000 --min-points 80
+gpsplit -i ./my-recording.gpx split -d 5000 --duration 8h --pause-split 200,1h | gpsplit filter --trim 50 | gpsplit -o ./gpx remove --simplify 40 --min-radius 1000 --min-points 80
 ```
 
 In short, this command splits a large GPX file into multiple files whenever it
@@ -58,9 +58,9 @@ The whole command can be broken down as follows:
 
 * `gpsplit -i ./my-recording.gpx` instructs `gpsplit` to read from
   `./my-recording.gpx`
-* `split -d 5000 -t 8h --pause-split 200,1h` splits all segments that have
+* `split -d 5000 --duration 8h --pause-split 200,1h` splits all segments that have
   certain jumps between consecutive points.
-  + `-t 8h` splits, if the duration between two consecutive points is over 8
+  + `--duration 8h` splits, if the duration between two consecutive points is over 8
     hours.
   + `-d 5000` splits, if the distance between two consecutive points is over
     5000 meters.
@@ -74,8 +74,8 @@ The whole command can be broken down as follows:
   the last point are not removed.
 * `| gpsplit -o ./gpx` reads from the previous command and stores all GPX files
   within the provided folder `./gpx`.
-* `direct --simplify 40 --min-radius 1000 --min-points 80` applies misc. functions
-that are applied directly on GPX segments.
+* `remove --simplify 40 --min-radius 1000 --min-points 80` removes certain
+  track segments and waypoints.
   + `--simplify 40` applies the Ramer-Douglas-Peucker algorithm for removing
     unnecessary GPX points if they lie outside a 40 meter range with respect to
     their neighboring points.
@@ -131,7 +131,7 @@ if err != nil {panic(err)}
 
 Besides `Split`, `gpxtransform` holds further transformation types, including
 `Filter`, `AnalyzeFile`, and `Direct`. The last one, `Direct`, provides greatest
-flexibility in regard to direct modification of GPX segments.
+flexibility in regard to direct modification of GPX data.
 
 Most transformation types expect the specification of desired options (cf.
 `gpxtransform.Split(options.TimeSplit(duration))`). The

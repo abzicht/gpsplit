@@ -8,9 +8,9 @@ import (
 )
 
 type FilterCommand struct {
-	Trim      unit.Length `short:"t" long:"trim" description:"Trim all points at a segment's start AND end that are farther away than the provided radius. If this command is used, --trim-start and --trim-end are ignored." default:"0"`
-	TrimStart unit.Length `long:"trim-start" description:"Trim all points at a segment's start that are farther away than the provided radius." default:"0"`
-	TrimEnd   unit.Length `long:"trim-end" description:"Trim all points at a segment's end that are farther away than the provided radius." default:"0"`
+	Trim      unit.Length `short:"t" long:"trim" description:"Trim all points at a segment's start AND end that are within the provided radius. If this command is used, --trim-start and --trim-end are ignored." default:"0"`
+	TrimStart unit.Length `long:"trim-start" description:"Trim all points at a segment's start that are within the provided radius." default:"0"`
+	TrimEnd   unit.Length `long:"trim-end" description:"Trim all points at a segment's end that are within the provided radius." default:"0"`
 }
 
 func (f FilterCommand) GetConfiguration() (tc config.TransformConfig, err error) {
