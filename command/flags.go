@@ -15,11 +15,11 @@ Flag holds all arguments passed via command line
 type Flags struct {
 	In      string         `short:"i" long:"in" description:"The file or folder that new GPX data is read from. Leave empty to read from STDIN."`
 	Out     string         `short:"o" long:"out" description:"The file or folder that new GPX data is written to. Leave empty to write to STDOUT."`
-	Verbose []bool         `short:"v" long:"verbosity" description:"Verbosity with that information is printed to STDOUT."`
-	Split   SplitCommand   `command:"split" description:"Splits GPX segments into multiple segments or files."`
-	Merge   MergeCommand   `command:"merge" description:"Merges multiple GPX segments and tracks into single entities."`
-	Filter  FilterCommand  `command:"filter" description:"Applies filters on GPX points."`
-	Direct  DirectCommand  `command:"direct" description:"Applies misc. functionality directly on GPX segments."`
+	Verbose []bool         `short:"v" long:"verbosity" description:"Verbosity with that information is logged to STDERR."`
+	Split   SplitCommand   `command:"split" description:"Splits track segments into multiple tracks or files."`
+	Merge   MergeCommand   `command:"merge" description:"Merges multiple files / tracks / track segments into single instances."`
+	Filter  FilterCommand  `command:"filter" description:"Applies filters on waypoints."`
+	Direct  DirectCommand  `command:"direct" description:"Applies misc. functionality directly on files / tracks / track segments."`
 	Analyze AnalyzeCommand `command:"analyze" description:"Prints information for the provided GPX data."`
 }
 
@@ -28,18 +28,8 @@ Init performs initialization, including setting a global slog-level
 */
 func (flagOpts Flags) Init() (err error) {
 	// See: https://pkg.go.dev/log/slog#Level
-	level := slog.LevelError
-	switch max(-4, min(8, 8-4*len(flagOpts.Verbose))) {
-	case int(slog.LevelDebug):
-		level = slog.LevelDebug
-	case int(slog.LevelInfo):
-		level = slog.LevelInfo
-	case int(slog.LevelWarn):
-		level = slog.LevelWarn
-	case int(slog.LevelError):
-		level = slog.LevelError
-	}
-	handler := slog.NewTextHandler(os.Stdout, &slog.HandlerOptions{Level: level})
+	var level slog.Level = slog.Level(max(-4, min(8, 8-4*len(flagOpts.Verbose))))
+	handler := slog.NewTextHandler(os.Stderr, &slog.HandlerOptions{Level: level})
 	logger := slog.New(handler)
 	slog.SetDefault(logger)
 	return nil
